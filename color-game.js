@@ -1,9 +1,12 @@
-var complexity = 6;
+var complexity = 3;
 var colorOptions = generateColorOptions(complexity);
 
 var colorCode = document.getElementById("header-span");
 var randomNum = Math.floor(Math.random() * colorOptions.length);
 var correctColor = colorOptions[randomNum];
+
+colorCode.textContent = correctColor;
+
 var squares = document.getElementsByClassName("square-box");
 var header = document.querySelector("#header");
 var midSpan = document.querySelector("#sub-t");
@@ -13,29 +16,41 @@ var newButton = document.querySelector("#button1");
 newButton.addEventListener("click", restartGame);
 
 var hardButton = document.querySelector("#button2");
-hardButton.addEventListener("click", setComplexityHard)
 var easyButton = document.querySelector("#button3");
-easyButton.addEventListener("click", setComplexityEasy)
 
 // on clicking new button
 function restartGame(){
     window.location.reload();
 }
 
-function setComplexityHard(){
-    complexity = 6;
+function setComplexity(){
+    hardButton.addEventListener("click", function(){
+
+    });
+
+    easyButton.addEventListener("click", function(){
+
+    });
 }
 
-function setComplexityEasy(){
-    complexity = 3;
+
+
+function assignColors(){
+    // Assign a random color to each square
+    if(colorOptions.length === 3){
+        for(var i = 3; i < 6; i++){
+            squares[i].style.backgroundColor = "rgb(0, 0, 0)";
+        }
+    }
+    for(var i = 0; i < colorOptions.length; i++){
+        squares[i].style.backgroundColor = colorOptions[i];
+    }
 }
 
-colorCode.textContent = correctColor;
+
+assignColors();
 
 for(var i = 0; i < squares.length; i++){
-    // Assign a random color to each square
-    squares[i].style.backgroundColor = colorOptions[i];
-
     // Add click event to each square
     squares[i].addEventListener("click", function(){
         // Compared clicked color to correct color
@@ -43,11 +58,6 @@ for(var i = 0; i < squares.length; i++){
         if(clickedColor === correctColor){
             // Assign all boxes the correct color
             changeColors(clickedColor);
-            var a = 0;
-            while(a < squares.length){
-                squares[a].style.backgroundColor = correctColor;
-                a++;
-            }
             
             // Change header bg to correct color
             header.style.backgroundColor = correctColor;
@@ -63,14 +73,6 @@ for(var i = 0; i < squares.length; i++){
     });
 }
 
-// Assign all boxes the correct color
-function changeColors(color){
-    var a = 0;
-    while(a < squares.length){
-        squares[a].style.backgroundColor = color;
-        a++;
-    }
-}
 
 // Generate a random color
 function randomColor(){
@@ -78,7 +80,7 @@ function randomColor(){
     var red = Math.floor(Math.random() * 256);
     var green = Math.floor(Math.random() * 256);
     var blue = Math.floor(Math.random() * 256);
-
+    
     var randColor = `rgb(${red}, ${green}, ${blue})`;
     return randColor;
 }
@@ -94,4 +96,14 @@ function generateColorOptions(num){
     }
     console.log(theColorOptions);
     return theColorOptions;
+}
+
+
+// Assign all boxes the correct color
+function changeColors(color){
+    var a = 0;
+    while(a < colorOptions.length){
+        squares[a].style.backgroundColor = color;
+        a++;
+    }
 }
