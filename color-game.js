@@ -8,6 +8,28 @@ var squares = document.getElementsByClassName("square-box");
 var header = document.querySelector("#header");
 var midSpan = document.querySelector("#sub-t");
 
+// Select individual buttons, and 'click' event listener
+var newButton = document.querySelector("#button1");
+newButton.addEventListener("click", restartGame);
+
+var hardButton = document.querySelector("#button2");
+hardButton.addEventListener("click", setComplexityHard)
+var easyButton = document.querySelector("#button3");
+easyButton.addEventListener("click", setComplexityEasy)
+
+// on clicking new button
+function restartGame(){
+    window.location.reload();
+}
+
+function setComplexityHard(){
+    complexity = 6;
+}
+
+function setComplexityEasy(){
+    complexity = 3;
+}
+
 colorCode.textContent = correctColor;
 
 for(var i = 0; i < squares.length; i++){
