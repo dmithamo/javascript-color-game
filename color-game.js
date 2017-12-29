@@ -1,4 +1,4 @@
-var complexity = 3;
+var complexity = 6;
 var colorOptions = generateColorOptions(complexity);
 
 var colorCode = document.getElementById("header-span");
