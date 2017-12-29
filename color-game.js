@@ -1,13 +1,9 @@
-var colorOptions = [
-    "rgb(255, 0, 0)",
-    "rgb(0, 255, 0)",
-    "rgb(0, 0, 255)",
-    "rgb(255, 255, 0)",
-    "rgb(255, 0, 255)",
-    "rgb(0, 255, 255)"
-]
+var complexity = 6;
+var colorOptions = generateColorOptions(complexity);
+
 var colorCode = document.getElementById("header-span");
-var correctColor = randomColor();
+var randomNum = Math.floor(Math.random() * colorOptions.length);
+var correctColor = colorOptions[randomNum];
 var squares = document.getElementsByClassName("square-box");
 var header = document.querySelector("#header");
 var midSpan = document.querySelector("#sub-t");
@@ -61,10 +57,19 @@ function randomColor(){
     var green = Math.floor(Math.random() * 256);
     var blue = Math.floor(Math.random() * 256);
 
-    console.log(red, green, blue);
-
     var randColor = `rgb(${red}, ${green}, ${blue})`;
     return randColor;
 }
 
-alert(randomColor())
+// Populate list of color oprions with random colors
+function generateColorOptions(num){
+    // Call the randomColor function for num number of times to populate 
+    // the list of colorOptions list with num colors
+    var theColorOptions = []; 
+    for(var a = 0; a < num; a++){
+        var color = randomColor(); 
+        theColorOptions.push(color); 
+    }
+    console.log(theColorOptions);
+    return theColorOptions;
+}
