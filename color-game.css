@@ -6,14 +6,16 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 
-.header{
+#header{
     max-width: 100%;
     text-align: center;
-    background-color: blue;
+    background-color: rgb(0, 0, 255);
     font-size: 1.5em;
     padding: 3px;
     max-height: 170px;
+    text-shadow: 0 0 10px rgb(0, 0, 0);
 }
+
 
 #header-span{
     font-size: 2em;
@@ -28,29 +30,26 @@ body{
 }
 
 #sub-1{
-    width: 35%;
+    width: 25%;
     text-align: right;
-    padding-left: 5%;
 }
 
 #sub-t{
     font-family: 'Open Sans Condensed', sans-serif;
-    width: 15%;
+    width: 25%;
     text-align: center;
-    padding-left: 5%;
     text-transform: capitalize;
+    font-weight: bold;
 }
 
 #sub-2{
     width: 25%;
-    text-align: right;
-    padding-left: 3%;
+    text-align: center;
 }
 
 #sub-3{
-    width: 30%;
+    width: 25%;
     text-align: left;
-    padding-left: 1%;
 }
 
 
