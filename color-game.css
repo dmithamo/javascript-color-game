@@ -26,10 +26,22 @@ body{
     width: 100%;
     display: flex;
     color: black;
+}
+
+button{
+    background: none;
+    border: none;
+    text-transform: uppercase;
     font-weight: 800;
 }
 
-#sub-1{
+button:hover, button:focus{
+    background: blue;
+    color: white;
+    border: none;
+}
+
+#button1{
     width: 25%;
     text-align: right;
 }
@@ -42,12 +54,12 @@ body{
     font-weight: bold;
 }
 
-#sub-2{
+#button2{
     width: 25%;
     text-align: center;
 }
 
-#sub-3{
+#button3{
     width: 25%;
     text-align: left;
 }
