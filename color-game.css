@@ -12,7 +12,7 @@ h3{
 #header{
     max-width: 100%;
     text-align: center;
-    background-color: rgb(10, 116, 202);
+    background-color: rgb(184, 86, 4);
     font-size: 1.7em;
     font-weight: 900;
     padding: 20px 0;
@@ -20,7 +20,9 @@ h3{
     text-shadow: 0 0 10px rgb(0, 0, 0);
     margin: 0;
     letter-spacing: 1px;
-    transition: all 0.3s;
+    transition: background 0.5s;
+    -webkit-transition: background 0.5s;
+    -moz-transition: background 0.5s;
 }
 
 #header-span{
@@ -49,13 +51,15 @@ button{
     line-height: 1.5;
     letter-spacing: 1px;
     font-size: inherit;
-    transition: all 0.2s;
     margin: 0 5px;
     padding: 10 50px;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
 }
 
 button:hover, .clicked-button{
-    background-color: rgb(10, 116, 202);
+    background-color: rgb(184, 86, 4);
     color: white; 
     border: none;
 }
@@ -70,26 +74,14 @@ button:focus{
     border: none;
 }
 
-#button1{
-    /* text-align: right; */
-}
-
 #sub-t{
     font-size: 0.8em;
     display: inline-block;
     width: 31%;
 }
 
-#button2{
-    /* text-align: center; */
-}
-
-#button3{
-    /* text-align: center; */
-}
-
 .selected-complexity{
-    background: rgb(10, 116, 202);
+    background: rgb(184, 86, 4);
     color: white;
 }
 
@@ -106,5 +98,8 @@ button:focus{
     background-color: rgb(112, 113, 0);
     border-radius: 15px;
     margin: 1.66%;
-    transition: all 0.3s;
+    transition: background 0.5s;
+    -webkit-transition: background 0.5s;
+    -moz-transition: background 0.5s;
+    
 }
