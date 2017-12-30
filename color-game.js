@@ -18,9 +18,24 @@ newButton.addEventListener("click", restartGame);
 var hardButton = document.querySelector("#button2");
 var easyButton = document.querySelector("#button3");
 
-// on clicking new button
+// on clicking new button / Play again
 function restartGame(){
-    window.location.reload();
+    // window.location.reload();
+    // Reset colors in color options list
+    colorOptions = generateColorOptions(complexity);
+    // Assign squares these new colors
+    assignColors();
+    // Change the rgb code up top
+    randomNum = Math.floor(Math.random() * colorOptions.length);
+    correctColor = colorOptions[randomNum];
+    colorCode.textContent = correctColor;
+    // Reset button to white bg
+    newButton.classList.add("clicked-button");
+    newButton.classList.add("reset-button");
+    // Reset button text
+    newButton.textContent = "New Colors";
+    // Reset midspan text
+    midSpan.textContent = "Click the Color that matches the rgb code above";
 }
 
 function setComplexity(){
@@ -57,7 +72,7 @@ for(var i = 0; i < squares.length; i++){
         var clickedColor = this.style.backgroundColor;
         if(clickedColor === correctColor){
             // Assign all boxes the correct color
-            changeColors(clickedColor);
+            winningColors(clickedColor);
             
             // Change header bg to correct color
             header.style.backgroundColor = correctColor;
@@ -94,16 +109,34 @@ function generateColorOptions(num){
         var color = randomColor(); 
         theColorOptions.push(color); 
     }
-    console.log(theColorOptions);
     return theColorOptions;
 }
 
 
 // Assign all boxes the correct color
-function changeColors(color){
+function winningColors(color){
     var a = 0;
     while(a < colorOptions.length){
         squares[a].style.backgroundColor = color;
         a++;
     }
+    newButton.textContent = "Play again";
+    buttonsOnWin();
+}
+
+    // Make buttons inherit color of header bg on hover and click
+function buttonsOnWin(){
+    // select all buttons and add mouseover and mouseout event listeners
+    var allButtons = document.querySelectorAll("button");
+    for(var b = 0; b < allButtons.length; b++){
+        // Inherit header bg on mouseover
+        allButtons[b].addEventListener("mouseover", function(){
+            this.style.background = header.style.backgroundColor;
+        });
+        // Reset buttons styles on mouseout
+        allButtons[b].addEventListener("mouseout", function(){
+            this.style.background = "white";
+        });
+    }
+
 }
