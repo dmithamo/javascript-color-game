@@ -64,13 +64,18 @@ button:focus{
 }
 
 #button2{
-    width: 12.5%;
+    width: 12%;
     text-align: center;
 }
 
 #button3{
-    width: 12.5%;
-    text-align: left;
+    width: 12%;
+    text-align: center;
+}
+
+.selected-complexity{
+    background: rgb(33, 146, 29);
+    color: white;
 }
 
 
