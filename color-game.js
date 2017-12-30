@@ -38,7 +38,7 @@ function restartGame(){
     colorCode.textContent = pickCorrectColor();
 
     // Reset the header bg
-    header.style.backgroundColor = "rgb(33, 146, 29)";
+    header.style.backgroundColor = "rgb(10, 116, 202)";
 
     // Reset button to white bg
     newButton.classList.add("clicked-button");
@@ -48,7 +48,7 @@ function restartGame(){
     newButton.textContent = "New Colors";
 
     // Reset midspan text
-    midSpan.textContent = "Click the Color that matches the rgb code above";
+    midSpan.textContent = "Click the Color that matches the above rgb code";
 }
 
 hardButton.addEventListener("click", function(){
@@ -109,12 +109,12 @@ for(var i = 0; i < squares.length; i++){
             // Change header bg to correct color
             header.style.backgroundColor = correctColor;
             // Display 'Correct!'
-            midSpan.textContent = "Correct!"
+            midSpan.textContent = "Ni kama umepata"
         }
         else{
             this.style.backgroundColor = "rgb(0, 0, 0)";
             // Display 'Wroong!!!!'
-            midSpan.textContent = "You're Wrong, mate. Very Very Wrong. Ha!"
+            midSpan.textContent = "You're Wrong, mate. Wrong! Ha!"
         }
         
     });
