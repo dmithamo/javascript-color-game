@@ -1,6 +1,7 @@
 # javascript-color-game
 ### [A JavaScript based 'game' to hone js skills.]
-The game works by setting up an array of colors in clackable squares on the screen. On of these colors matches a pre-defined 'correct' color, whose rgb code is displayed on top of the screen. The player clicks on the ssquare whose color he/she thinks matches the given rgb code. Pretty neat, ja?
+The game works by setting up an array of colored clickable squares on the screen. One of these squares background color matches a pre-defined 'correct' color, whose rgb code is displayed on top of the screen. The player clicks on the square whose color he/she thinks matches the given rgb code. The choice he/she makes is compared against the correct color, and magic happens.
+Pretty neat, ja?
 
 ## The logic
 Aaaaam....read the js code. It's not that hard to understand. Really it isn't.
@@ -9,7 +10,7 @@ Aaaaam....read the js code. It's not that hard to understand. Really it isn't.
 Clone the repo as is to your machine. Open the html file (in the src folder) and you're ready to play. Simple as that.
 
 ## Prerequistes
-Besides a browser (Chrome is preferred, for reasons I need not give), none whatsoever.
+Besides a browser (Chrome is preferred, for reasons I will not give), none whatsoever.
 
 ## Built with
 * Vanilar js
