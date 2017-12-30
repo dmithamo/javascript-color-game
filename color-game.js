@@ -1,27 +1,41 @@
 var hardButton = document.querySelector("#button2");
 var easyButton = document.querySelector("#button3");
 
-var complexity = setComplexity(); 
+var complexity = checkComplexity(); 
 var colorOptions = generateColorOptions(complexity);
 
 var colorCode = document.getElementById("header-span");
-var randomNum = Math.floor(Math.random() * colorOptions.length);
-var correctColor = colorOptions[randomNum];
-
-colorCode.textContent = correctColor;
+colorCode.textContent = pickCorrectColor();
 
 var squares = document.getElementsByClassName("square-box");
+assignColors();
+
 var header = document.querySelector("#header");
 var midSpan = document.querySelector("#sub-t");
 
-// Select new Colors button, and 'click' event listener
+// Select new Colors button, add 'click' event listener
 var newButton = document.querySelector("#button1");
 newButton.addEventListener("click", restartGame);
 
-// on clicking new button / Play again
+// Pick random rgb code, set as correct color. Display up top
+function pickCorrectColor(){
+    var randomNum = Math.floor(Math.random() * colorOptions.length);
+    var correctColor = colorOptions[randomNum];
+    return correctColor;
+}
+
+
+// On clicking new button / Play again
 function restartGame(){
-    setComplexity();
-    createColors(complexity);
+    complexity = checkComplexity();
+    
+    colorOptions = generateColorOptions(complexity);
+    
+    // Assign squares these new colors
+    assignColors();
+
+    // Change the rgb code up top
+    colorCode.textContent = pickCorrectColor();
 
     // Reset the header bg
     header.style.backgroundColor = "rgb(33, 146, 29)";
@@ -37,60 +51,42 @@ function restartGame(){
     midSpan.textContent = "Click the Color that matches the rgb code above";
 }
 
-function setComplexity(){
-    hardButton.addEventListener("click", function(){
-        // // Set complexity, reset game with new complexity
-        // complexity = 6;
-        // createColors(complexity);
-        
-        // Remove class from easyButton
-        easyButton.classList.remove("selected-complexity");
-        restartGame();
-    });
-    
-    easyButton.addEventListener("click", function(){
-        // // Set complexity, reset game with new complexity
-        // complexity = 3;
-        // createColors(complexity);
-        
-        // Remove class from hardButton
-        hardButton.classList.remove("selected-complexity");
-        
-        // Add class to easyButton, set complexity to 3
-        easyButton.classList.add("selected-complexity");
-        
-        restartGame();
-    });
-    if("selected-complexity" === easyButton.classList[0]){
-        complexity = 3;
-    }else{
+hardButton.addEventListener("click", function(){
+    // Remove class from easyButton
+    easyButton.classList.remove("selected-complexity");
+    hardButton.classList.add("selected-complexity");
+    complexity = 6;
+    restartGame();
+});
+
+easyButton.addEventListener("click", function(){
+    // Remove class from hardButton
+    hardButton.classList.remove("selected-complexity");
+    // Add class to easyButton
+    easyButton.classList.add("selected-complexity");
+    complexity = 3;
+    restartGame();
+});
+
+function checkComplexity(){
+    if("selected-complexity" === hardButton.classList[0]){
         complexity = 6;
+    }else{
+        complexity = 3;
     }
     return complexity;
-
 }
 
-setComplexity();
-
-
-function createColors(num){
-    // Reset colors in color options list
-    colorOptions = generateColorOptions(num);
-
-    // Assign squares these new colors
-    assignColors();
-
-    // Change the rgb code up top
-    randomNum = Math.floor(Math.random() * colorOptions.length);
-    correctColor = colorOptions[randomNum];
-    colorCode.textContent = correctColor;
-}
 
 function assignColors(){
     // Assign a random color to each square
     if(colorOptions.length === 3){
         for(var i = 3; i < 6; i++){
-            squares[i].style.backgroundColor = "rgb(0, 0, 0)";
+            squares[i].style.display = "none";
+        }
+    }else{
+        for(var i = 3; i < 6; i++){
+            squares[i].style.display = "block";
         }
     }
     for(var i = 0; i < colorOptions.length; i++){
@@ -99,13 +95,13 @@ function assignColors(){
 }
 
 
-assignColors();
 
 for(var i = 0; i < squares.length; i++){
     // Add click event to each square
     squares[i].addEventListener("click", function(){
         // Compared clicked color to correct color
         var clickedColor = this.style.backgroundColor;
+        var correctColor = colorCode.textContent;
         if(clickedColor === correctColor){
             // Assign all boxes the correct color
             winningColors(clickedColor);
@@ -118,7 +114,7 @@ for(var i = 0; i < squares.length; i++){
         else{
             this.style.backgroundColor = "rgb(0, 0, 0)";
             // Display 'Wroong!!!!'
-            midSpan.textContent = "Wrong, sir. Wrong!"
+            midSpan.textContent = "You're Wrong, mate. Very Very Wrong. Ha!"
         }
         
     });
@@ -138,6 +134,7 @@ function randomColor(){
 
 // Populate list of color oprions with random colors
 function generateColorOptions(num){
+    // num = checkComplexity();
     // Call the randomColor function for num number of times to populate 
     // the list of colorOptions list with num colors
     var theColorOptions = []; 
