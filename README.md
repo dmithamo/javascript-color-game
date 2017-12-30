@@ -20,6 +20,6 @@ Besides a browser (Chrome is preferred, for reasons I will not give), none whats
 * dMithamo. 
 
 ## License
-This project is protected by the laws of ... Ha! Gotcha. Just Kidding. Feel free to use what part of this project (or all of it) as you please. It is completely free. If you can spare a second to suggest an improvement, or just high five me, I'd sure be greatful.
+This project is protected by the laws of ... Ha! Gotcha. Just Kidding. Feel free to use what part of this project (or all of it) as you please. It is completely free. If you can spare a second to suggest an improvement, or just high five me, I'd sure be grateful.
 
-### Adios!
+### Gracias!
