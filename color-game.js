@@ -1,4 +1,7 @@
-var complexity = 6;
+var hardButton = document.querySelector("#button2");
+var easyButton = document.querySelector("#button3");
+
+var complexity = setComplexity(); 
 var colorOptions = generateColorOptions(complexity);
 
 var colorCode = document.getElementById("header-span");
@@ -11,26 +14,14 @@ var squares = document.getElementsByClassName("square-box");
 var header = document.querySelector("#header");
 var midSpan = document.querySelector("#sub-t");
 
-// Select individual buttons, and 'click' event listener
+// Select new Colors button, and 'click' event listener
 var newButton = document.querySelector("#button1");
 newButton.addEventListener("click", restartGame);
 
-var hardButton = document.querySelector("#button2");
-var easyButton = document.querySelector("#button3");
-
 // on clicking new button / Play again
 function restartGame(){
-    // window.location.reload();
-    // Reset colors in color options list
-    colorOptions = generateColorOptions(complexity);
-
-    // Assign squares these new colors
-    assignColors();
-
-    // Change the rgb code up top
-    randomNum = Math.floor(Math.random() * colorOptions.length);
-    correctColor = colorOptions[randomNum];
-    colorCode.textContent = correctColor;
+    setComplexity();
+    createColors(complexity);
 
     // Reset the header bg
     header.style.backgroundColor = "rgb(33, 146, 29)";
@@ -48,15 +39,52 @@ function restartGame(){
 
 function setComplexity(){
     hardButton.addEventListener("click", function(){
-
+        // // Set complexity, reset game with new complexity
+        // complexity = 6;
+        // createColors(complexity);
+        
+        // Remove class from easyButton
+        easyButton.classList.remove("selected-complexity");
+        restartGame();
     });
-
+    
     easyButton.addEventListener("click", function(){
-
+        // // Set complexity, reset game with new complexity
+        // complexity = 3;
+        // createColors(complexity);
+        
+        // Remove class from hardButton
+        hardButton.classList.remove("selected-complexity");
+        
+        // Add class to easyButton, set complexity to 3
+        easyButton.classList.add("selected-complexity");
+        
+        restartGame();
     });
+    if("selected-complexity" === easyButton.classList[0]){
+        complexity = 3;
+    }else{
+        complexity = 6;
+    }
+    return complexity;
+
 }
 
+setComplexity();
 
+
+function createColors(num){
+    // Reset colors in color options list
+    colorOptions = generateColorOptions(num);
+
+    // Assign squares these new colors
+    assignColors();
+
+    // Change the rgb code up top
+    randomNum = Math.floor(Math.random() * colorOptions.length);
+    correctColor = colorOptions[randomNum];
+    colorCode.textContent = correctColor;
+}
 
 function assignColors(){
     // Assign a random color to each square
