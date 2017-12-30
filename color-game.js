@@ -23,17 +23,25 @@ function restartGame(){
     // window.location.reload();
     // Reset colors in color options list
     colorOptions = generateColorOptions(complexity);
+
     // Assign squares these new colors
     assignColors();
+
     // Change the rgb code up top
     randomNum = Math.floor(Math.random() * colorOptions.length);
     correctColor = colorOptions[randomNum];
     colorCode.textContent = correctColor;
+
+    // Reset the header bg
+    header.style.backgroundColor = "rgb(33, 146, 29)";
+
     // Reset button to white bg
     newButton.classList.add("clicked-button");
     newButton.classList.add("reset-button");
+
     // Reset button text
     newButton.textContent = "New Colors";
+
     // Reset midspan text
     midSpan.textContent = "Click the Color that matches the rgb code above";
 }
@@ -121,22 +129,4 @@ function winningColors(color){
         a++;
     }
     newButton.textContent = "Play again";
-    buttonsOnWin();
-}
-
-    // Make buttons inherit color of header bg on hover and click
-function buttonsOnWin(){
-    // select all buttons and add mouseover and mouseout event listeners
-    var allButtons = document.querySelectorAll("button");
-    for(var b = 0; b < allButtons.length; b++){
-        // Inherit header bg on mouseover
-        allButtons[b].addEventListener("mouseover", function(){
-            this.style.background = header.style.backgroundColor;
-        });
-        // Reset buttons styles on mouseout
-        allButtons[b].addEventListener("mouseout", function(){
-            this.style.background = "white";
-        });
-    }
-
 }
