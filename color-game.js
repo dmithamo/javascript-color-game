@@ -1,20 +1,19 @@
 var hardButton = document.querySelector("#button2");
 var easyButton = document.querySelector("#button3");
 
+var complexityButtons = document.getElementsByClassName("set-complexity");
+
+var squares = document.getElementsByClassName("square-box");
+var colorCode = document.getElementById("header-span");
+var header = document.querySelector("#header");
+var midSpan = document.querySelector("#sub-t");
+var newButton = document.querySelector("#button1");
+
 var complexity = checkComplexity(); 
 var colorOptions = generateColorOptions(complexity);
 
-var colorCode = document.getElementById("header-span");
 colorCode.textContent = pickCorrectColor();
-
-var squares = document.getElementsByClassName("square-box");
 assignColors();
-
-var header = document.querySelector("#header");
-var midSpan = document.querySelector("#sub-t");
-
-// Select new Colors button, add 'click' event listener
-var newButton = document.querySelector("#button1");
 newButton.addEventListener("click", restartGame);
 
 // Pick random rgb code, set as correct color. Display up top
@@ -51,25 +50,23 @@ function restartGame(){
     midSpan.textContent = "Click the Color that matches the above rgb code";
 }
 
-hardButton.addEventListener("click", function(){
-    // Remove class from easyButton
-    easyButton.classList.remove("selected-complexity");
-    hardButton.classList.add("selected-complexity");
-    complexity = 6;
-    restartGame();
-});
 
-easyButton.addEventListener("click", function(){
-    // Remove class from hardButton
-    hardButton.classList.remove("selected-complexity");
-    // Add class to easyButton
-    easyButton.classList.add("selected-complexity");
-    complexity = 3;
-    restartGame();
-});
+for(var i = 0; i < complexityButtons.length; i++){
+    complexityButtons[i].addEventListener("click", function(){
+        if(this.textContent === "Easy"){
+            this.classList.add("selected-complexity")
+            complexityButtons[0].classList.remove("selected-complexity");
+        }
+        else if(this.textContent === "Hard"){
+            this.classList.add("selected-complexity");
+            complexityButtons[1].classList.remove("selected-complexity");
+        }
+        restartGame();
+    });
+}
 
 function checkComplexity(){
-    if("selected-complexity" === hardButton.classList[0]){
+    if("selected-complexity" === complexityButtons[0].classList[1]){
         complexity = 6;
     }else{
         complexity = 3;
