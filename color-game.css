@@ -12,7 +12,7 @@ h3{
 #header{
     max-width: 100%;
     text-align: center;
-    background-color: rgb(184, 86, 4);
+    background-color: rgb(62, 58, 208);
     font-size: 1.7em;
     font-weight: 900;
     padding: 20px 0;
@@ -59,7 +59,7 @@ button{
 }
 
 button:hover, .clicked-button{
-    background-color: rgb(184, 86, 4);
+    background-color: rgb(62, 58, 208);
     color: white; 
     border: none;
 }
@@ -81,7 +81,7 @@ button:focus{
 }
 
 .selected-complexity{
-    background: rgb(184, 86, 4);
+    background: rgb(62, 58, 208);
     color: white;
 }
 

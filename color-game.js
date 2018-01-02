@@ -63,7 +63,7 @@ function restartGame() {
     colorCode.textContent = pickCorrectColor();
 
     // Reset the header bg
-    header.style.backgroundColor = "rgb(184, 86, 4)";
+    header.style.backgroundColor = "rgb(62, 58, 208)";
 
     // Reset button to white bg
     resetButton.classList.add("clicked-button");
